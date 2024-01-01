@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.bg-gray {
+  background-color: #ededed;
+  transition: 0.2s;
+}
+
+.bg-gray:hover {
+  background-color: #dbdbdb;
+}
+
+button,
+input {
+  border: none;
+  outline: none;
+}
+
+.h-screen {
+  min-height: 100dvh;
+}
