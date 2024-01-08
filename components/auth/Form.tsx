@@ -2,7 +2,7 @@ import { Formik, Form } from "formik";
 
 import "./styles.css";
 import ActionLink from "./ActionLink";
-import React, { ReactNode } from "react";
+import React from "react";
 import Input from "./Input";
 import Submit from "./Submit";
 
