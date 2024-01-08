@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sketcher",
-  description: "Sketcher - App for development planning management.",
+  title: "AppNest",
+  description: "AppNest - App for development planning management.",
 };
 
 export default function RootLayout({
