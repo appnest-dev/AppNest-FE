@@ -1,8 +1,6 @@
 "use client";
 
 import Form from "@/components/auth/Form";
-import Input from "@/components/auth/Input";
-import Submit from "@/components/auth/Submit";
 
 export default function page() {
   const actions = {
@@ -10,12 +8,21 @@ export default function page() {
     "Register Now": "/auth/register",
   };
 
+  const inputs = [
+    {
+      id: "email",
+      title: "Email",
+      type: "email",
+      placeholder: "Your Email",
+    },
+  ];
+
   return (
-    <>
-      <Form title="Forgot Password?" actions={actions}>
-        <Input id="email" title="Email" type="email" placeholder="Your Email" />
-        <Submit title="Send Recovery Email" />
-      </Form>
-    </>
+    <Form
+      title="Forgot Password?"
+      submitTitle="Send Recovery Email"
+      actions={actions}
+      inputs={inputs}
+    />
   );
 }

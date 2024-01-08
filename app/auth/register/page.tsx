@@ -1,32 +1,41 @@
 "use client";
 
 import Form from "@/components/auth/Form";
-import Input from "@/components/auth/Input";
-import Submit from "@/components/auth/Submit";
 
 export default function page() {
   const actions = {
+    "Forgot Password?": "/auth/forgot",
     "Have Account?": "/auth",
   };
 
+  const inputs = [
+    {
+      id: "email",
+      title: "Email",
+      type: "email",
+      placeholder: "Your Email",
+    },
+    {
+      id: "password",
+      title: "Password",
+      type: "password",
+      placeholder: "Your Password",
+    },
+    {
+      id: "passwordConfirmation",
+      title: "Password Confirmation",
+      type: "password",
+      placeholder: "Your Password Confirmation",
+    },
+  ];
+
   return (
-    <>
-      <Form title="Forgot Password?" actions={actions} google>
-        <Input id="email" title="Email" type="email" placeholder="Your Email" />
-        <Input
-          id="password"
-          title="password"
-          type="password"
-          placeholder="Your Password"
-        />
-        <Input
-          id="passwordConfirmation"
-          title="password Confirmation"
-          type="password"
-          placeholder="Your Password Confirmation"
-        />
-        <Submit title="Register" />
-      </Form>
-    </>
+    <Form
+      title="Register"
+      submitTitle="Register"
+      actions={actions}
+      google
+      inputs={inputs}
+    />
   );
 }
