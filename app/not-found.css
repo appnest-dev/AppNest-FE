@@ -1,0 +1,29 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+img {
+  height: 80px;
+  width: fit-content;
+}
+
+h1 {
+  font-size: 200px;
+}
+
+@media (width < 768px) {
+  img {
+    height: 50px;
+  }
+  h1 {
+    font-size: 100px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+}
