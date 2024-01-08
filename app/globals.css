@@ -9,7 +9,7 @@
   transition: 0.2s;
 }
 
-.bg-gray:hover {
+:not(aside).bg-gray:hover {
   background-color: #dbdbdb;
 }
 
@@ -19,6 +19,25 @@ input {
   outline: none;
 }
 
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+a:hover {
+  color: unset;
+}
+
 .h-screen {
+  height: 100dvh;
+}
+
+.min-h-screen {
   min-height: 100dvh;
+}
+
+ul {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 !important;
 }
