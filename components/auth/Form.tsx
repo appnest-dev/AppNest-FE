@@ -38,6 +38,7 @@ export default function FormComponent({
     console.log(values);
   };
 
+  // uncompleted
   const validate = (values: Values) => {
     let errors: Values = {};
 
@@ -60,6 +61,7 @@ export default function FormComponent({
         validate={validate}
       >
         {({ handleSubmit }) => (
+          // uncompleted
           <Form onSubmit={handleSubmit}>
             {inputs.map((el) => (
               <>
