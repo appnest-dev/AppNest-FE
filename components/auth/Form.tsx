@@ -1,10 +1,12 @@
-import { Formik, Form } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 
 import "./styles.css";
 import ActionLink from "./ActionLink";
 import React from "react";
 import Input from "./Input";
 import Submit from "./Submit";
+
+import { InputProps } from "./Input";
 
 type Values = {
   email?: string;
@@ -13,13 +15,6 @@ type Values = {
   newPassword?: string;
   newPasswordConfirmation?: string;
   OTC?: string;
-};
-
-type InputProps = {
-  type: string;
-  title: string;
-  id: string;
-  placeholder: string;
 };
 
 type Props = {
@@ -38,12 +33,19 @@ export default function FormComponent({
   submitTitle,
 }: Props) {
   const initialValues = {};
+
   const handleSubmit = (values: Values) => {
     console.log(values);
   };
 
+  const validate = (values: Values) => {
+    let errors: Values = {};
+
+    return errors;
+  };
+
   return (
-    <section className="form mx-auto">
+    <section className="form mx-auto bg-white">
       <h2 className="text-center fs-5 fw-semibold pb-4">{title}</h2>
 
       {google && (
@@ -52,17 +54,26 @@ export default function FormComponent({
         </button>
       )}
 
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validate={validate}
+      >
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             {inputs.map((el) => (
-              <Input
-                key={el.id}
-                id={el.id}
-                type={el.type}
-                title={el.title}
-                placeholder={el.placeholder}
-              />
+              <>
+                <Input
+                  key={el.id}
+                  id={el.id}
+                  type={el.type}
+                  title={el.title}
+                  placeholder={el.placeholder}
+                />
+                <ErrorMessage name={el.id}>
+                  {(msg) => <span className="text-danger py-1">{msg}</span>}
+                </ErrorMessage>
+              </>
             ))}
             <Submit title={submitTitle} />
           </Form>
