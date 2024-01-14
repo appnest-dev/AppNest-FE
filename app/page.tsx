@@ -4,7 +4,7 @@ import HLogo from "@/components/HLogo";
 
 export default function Home() {
   return (
-    <main className="d-flex flex-column justify-content-center align-items-center gap-4 min-h-screen">
+    <main className="d-flex flex-column bg-gradient-gray justify-content-center align-items-center gap-4 min-h-screen">
       <HLogo width={300} />
       <div className="d-flex gap-3">
         <Link
