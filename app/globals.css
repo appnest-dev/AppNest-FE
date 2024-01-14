@@ -41,3 +41,12 @@ ul {
   padding: 0 !important;
   margin: 0 !important;
 }
+
+.bg-gradient-gray {
+  background: rgb(201, 201, 201);
+  background: linear-gradient(
+    133deg,
+    rgba(201, 201, 201, 1) 0%,
+    rgba(255, 255, 255, 1) 69%
+  );
+}
