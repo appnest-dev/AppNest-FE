@@ -1,7 +1,7 @@
 import { Field } from "formik";
 import { Form } from "react-bootstrap";
 
-type InputProps = {
+export type InputProps = {
   type: string;
   title: string;
   id: string;
