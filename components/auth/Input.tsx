@@ -6,11 +6,18 @@ export type InputProps = {
   title: string;
   id: string;
   placeholder: string;
+  required: boolean;
 };
 
-export default function Input({ type, id, title, placeholder }: InputProps) {
+export default function Input({
+  type,
+  id,
+  title,
+  placeholder,
+  required,
+}: InputProps) {
   return (
-    <Form.Group className="d-flex flex-column my-3">
+    <Form.Group className="d-flex flex-column">
       <Form.Label htmlFor={id} className="fw-semibold">
         {title}
       </Form.Label>
