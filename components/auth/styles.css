@@ -5,6 +5,13 @@
   padding: 20px;
 }
 
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 10px 0;
+}
+
 @media (width < 900px) {
   .form {
     width: 100%;
