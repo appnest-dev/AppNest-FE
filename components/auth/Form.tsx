@@ -8,7 +8,7 @@ import Submit from "./Submit";
 
 import { InputProps } from "./Input";
 
-type Values = {
+type Auth = {
   email?: string;
   password?: string;
   passwordConfirmation?: string;
@@ -16,6 +16,8 @@ type Values = {
   newPasswordConfirmation?: string;
   OTC?: string;
 };
+
+type Values = Auth;
 
 type Props = {
   title: string;
@@ -32,7 +34,9 @@ export default function FormComponent({
   inputs,
   submitTitle,
 }: Props) {
-  const initialValues = {};
+  const initialValues = inputs.reduce((prev, curr) => {
+    return { ...prev, [curr.id]: "" };
+  }, {});
 
   const handleSubmit = (values: Values) => {
     console.log(values);
@@ -41,6 +45,11 @@ export default function FormComponent({
   // uncompleted
   const validate = (values: Values) => {
     let errors: Values = {};
+    Object.values(values).forEach((el, index) => {
+      if (el === "" && inputs[index].required) {
+        errors[inputs[index].id as keyof Values] = "required";
+      }
+    });
 
     return errors;
   };
@@ -64,18 +73,18 @@ export default function FormComponent({
           // uncompleted
           <Form onSubmit={handleSubmit}>
             {inputs.map((el) => (
-              <>
+              <div key={el.id} className="field">
                 <Input
-                  key={el.id}
                   id={el.id}
                   type={el.type}
                   title={el.title}
                   placeholder={el.placeholder}
+                  required={el.required}
                 />
                 <ErrorMessage name={el.id}>
                   {(msg) => <span className="text-danger py-1">{msg}</span>}
                 </ErrorMessage>
-              </>
+              </div>
             ))}
             <Submit title={submitTitle} />
           </Form>
