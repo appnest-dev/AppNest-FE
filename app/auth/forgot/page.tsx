@@ -14,6 +14,7 @@ export default function page() {
       title: "Email",
       type: "email",
       placeholder: "Your Email",
+      required: true,
     },
   ];
 

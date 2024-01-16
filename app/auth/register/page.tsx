@@ -14,18 +14,21 @@ export default function page() {
       title: "Email",
       type: "email",
       placeholder: "Your Email",
+      required: true,
     },
     {
       id: "password",
       title: "Password",
       type: "password",
       placeholder: "Your Password",
+      required: true,
     },
     {
       id: "passwordConfirmation",
       title: "Password Confirmation",
       type: "password",
       placeholder: "Your Password Confirmation",
+      required: true,
     },
   ];
 

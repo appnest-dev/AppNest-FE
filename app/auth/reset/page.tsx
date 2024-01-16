@@ -14,18 +14,21 @@ export default function page() {
       title: "One-Time Code",
       type: "number",
       placeholder: "Your OTC",
+      required: true,
     },
     {
       id: "newPassword",
       title: "New Password",
       type: "password",
       placeholder: "Your New Password",
+      required: true,
     },
     {
       id: "newPasswordConfirmation",
       title: "New Password Confirmation",
       type: "password",
       placeholder: "Your New Password Confirmation",
+      required: true,
     },
   ];
 
