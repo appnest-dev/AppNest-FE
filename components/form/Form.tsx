@@ -45,8 +45,10 @@ export default function FormComponent({
     },
     password: {
       regExp:
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[#?!@$%^&*-])[A-Za-z\d#?!@$%^&*-]{8,30}$/,
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[#?!@$%^&*-])[A-Za-z\d#?!@$%^&*-]{8,}$/,
       msg: "Min 8 characters, max 30 characters, at least one letter, number and special character",
+      min: 8,
+      max: 30,
     },
   };
 
