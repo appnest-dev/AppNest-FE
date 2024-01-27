@@ -1,6 +1,6 @@
 "use client";
 
-import Form from "@/components/Form/Form";
+import Form from "@/components/form/Form";
 
 export default function page() {
   const actions = {
