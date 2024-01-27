@@ -1,0 +1,72 @@
+.form {
+  width: 50%;
+  max-width: 500px;
+  box-shadow: 1px 1px 7px -5px #000;
+  padding: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 10px 0;
+}
+
+@media (width < 900px) {
+  .form {
+    width: 100%;
+  }
+}
+
+.action-link {
+  color: black;
+  text-decoration: none;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+  color: black;
+  background: none;
+}
+
+.required-star {
+  color: rgb(230, 40, 15);
+}
+
+.validation-msg-btn {
+  position: relative;
+}
+
+.validation-msg-btn:first-child {
+  background-color: rgb(146, 146, 146);
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  color: white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  transition: 0.1s ease;
+  cursor: default;
+}
+
+.validation-msg {
+  background-color: rgb(92, 92, 92);
+  color: rgb(238, 238, 238);
+  padding: 1px 2px;
+  width: max-content;
+  position: absolute;
+  left: 50%;
+  bottom: 103%;
+  translate: -50% -3px;
+  display: none;
+}
+
+.validation-msg-btn:hover .validation-msg {
+  display: block;
+}
+
+.validation-msg-btn:hover:first-child {
+  background-color: rgb(87, 87, 87);
+}
