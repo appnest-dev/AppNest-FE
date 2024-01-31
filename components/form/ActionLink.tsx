@@ -1,14 +1,13 @@
 import Link from "next/link";
 
-export default function ActionLink({
-  to,
-  title,
-}: {
-  to: string;
+export type Actions = {
   title: string;
-}) {
+  link: string;
+};
+
+export default function ActionLink({ link, title }: Actions) {
   return (
-    <Link href={to} className="action-link fw-semibold">
+    <Link href={link} className="action-link fw-semibold">
       {title}
     </Link>
   );
