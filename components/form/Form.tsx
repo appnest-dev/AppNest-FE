@@ -1,10 +1,13 @@
+"use client";
+
 import { Formik, Form, ErrorMessage } from "formik";
 
 import "./styles.css";
-import ActionLink from "./ActionLink";
-import React from "react";
+import ActionLink, { Actions } from "./ActionLink";
+import React, { useEffect } from "react";
 import Input, { InputProps } from "./Input";
 import Submit from "./Submit";
+import { redirect, useRouter } from "next/navigation";
 
 type Auth = {
   email?: string;
@@ -19,7 +22,8 @@ type Values = Auth;
 
 type Props = {
   title: string;
-  actions: object;
+  actions: Actions[];
+  onSubmit: (values: Values) => void;
   google?: boolean;
   inputs: InputProps[];
   submitTitle: string;
@@ -28,6 +32,7 @@ type Props = {
 export default function FormComponent({
   title,
   actions,
+  onSubmit,
   google,
   inputs,
   submitTitle,
@@ -52,8 +57,16 @@ export default function FormComponent({
     },
   };
 
+  const router = useRouter();
+
+  useEffect(() => {
+    localStorage.getItem(`token`) && redirect("/dashboard");
+  }, []);
+
   const handleSubmit = (values: Values) => {
-    console.log(values);
+    onSubmit(values);
+    localStorage.setItem(`token`, `test`);
+    router.push("/dashboard");
   };
 
   // under refactoring
@@ -64,7 +77,11 @@ export default function FormComponent({
       if (el[1] === "" && inputs[index].required) {
         errors[inputs[index].id as keyof Values] = "This is required";
         //
-      } else if (el[1] !== "" && inputs[index].required) {
+      } else if (
+        el[1] !== "" &&
+        inputs[index].required &&
+        !inputs[index].id.toLowerCase().includes("confirmation")
+      ) {
         Object.entries(validation).forEach((input) => {
           if (
             el[0].toLowerCase().includes(input[0].toLowerCase()) &&
@@ -75,6 +92,12 @@ export default function FormComponent({
             errors[
               inputs[index].id as keyof Values
             ] = `Invalid ${inputs[index].type}`;
+          }
+        });
+      } else if (inputs[index].id.toLowerCase().includes("confirmation")) {
+        Object.entries(values).forEach((ele, ind) => {
+          if (index - 1 === ind && ele[1] !== el[1]) {
+            errors[inputs[index].id as keyof Values] = `Password doesn't match`;
           }
         });
       }
@@ -136,8 +159,8 @@ export default function FormComponent({
       </Formik>
 
       <div className="d-flex justify-content-between pt-5">
-        {Object.entries(actions).map((key) => (
-          <ActionLink key={key[0]} to={key[1]} title={key[0]} />
+        {actions.map((key) => (
+          <ActionLink key={key.title} link={key.link} title={key.title} />
         ))}
       </div>
     </section>
