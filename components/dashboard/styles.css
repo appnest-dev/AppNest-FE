@@ -1,0 +1,48 @@
+aside {
+  width: 300px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.logo {
+  mix-blend-mode: multiply;
+  width: fit-content;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+.trial {
+  text-align: start;
+  background-color: transparent;
+  width: fit-content;
+}
+
+.trial:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.icon {
+  padding: 2px;
+  width: 18px;
+  height: 18px;
+}
+
+.list {
+  transition: 0.1s ease;
+}
+
+.close-list {
+  opacity: 0;
+  translate: 0 -50%;
+}
+
+.open-list {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.service {
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+}
