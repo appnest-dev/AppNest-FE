@@ -3,10 +3,10 @@
 import Form from "@/components/form/Form";
 
 export default function page() {
-  const actions = {
-    "Forgot Password?": "/auth/forgot",
-    "Have Account?": "/auth",
-  };
+  const actions = [
+    { title: "Forgot Password?", link: "/auth/forgot" },
+    { title: "Have Account?", link: "/auth" },
+  ];
 
   const inputs = [
     {
@@ -37,6 +37,7 @@ export default function page() {
       title="Register"
       submitTitle="Register"
       actions={actions}
+      onSubmit={(values) => console.log(values)}
       google
       inputs={inputs}
     />

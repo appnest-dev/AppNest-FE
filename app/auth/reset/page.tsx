@@ -3,10 +3,10 @@
 import Form from "@/components/form/Form";
 
 export default function page() {
-  const actions = {
-    "Remember Password?": "/auth",
-    "Register Now": "/auth/register",
-  };
+  const actions = [
+    { title: "Remember Password?", link: "/auth" },
+    { title: "Register Now", link: "/auth/register" },
+  ];
 
   const inputs = [
     {
@@ -37,6 +37,7 @@ export default function page() {
       title="Reset Password"
       submitTitle="Reset Password"
       actions={actions}
+      onSubmit={(values) => console.log(values)}
       inputs={inputs}
     />
   );
