@@ -29,6 +29,7 @@ export default function page() {
       type: "password",
       placeholder: "Your New Password Confirmation",
       required: true,
+      confirmationId: "newPassword",
     },
   ];
 

@@ -9,6 +9,7 @@ export type InputProps = {
   min?: number;
   max?: number;
   required: boolean;
+  confirmationId?: string;
 };
 
 export default function Input({
@@ -19,6 +20,7 @@ export default function Input({
   min,
   max,
   required,
+  confirmationId,
 }: InputProps) {
   return (
     <Form.Group className="d-flex flex-column">
