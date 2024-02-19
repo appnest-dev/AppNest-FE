@@ -8,17 +8,9 @@ import React, { useEffect } from "react";
 import Input, { InputProps } from "./Input";
 import Submit from "./Submit";
 import { redirect, useRouter } from "next/navigation";
-
-type Auth = {
-  email?: string;
-  password?: string;
-  passwordConfirmation?: string;
-  newPassword?: string;
-  newPasswordConfirmation?: string;
-  OTC?: string;
-};
-
-type Values = Auth;
+import { Values, validate } from "./functions/validate";
+import { ValidationTypes, validation } from "@/utils/consts";
+import { generateInitialValue } from "./functions/generateInitialValue";
 
 type Props = {
   title: string;
@@ -38,24 +30,8 @@ export default function FormComponent({
   submitTitle,
 }: Props) {
   const initialValues = inputs.reduce((prev, curr) => {
-    return { ...prev, [curr.id]: "" };
+    return { ...prev, [curr.id]: generateInitialValue(curr.type) };
   }, {});
-
-  const validation = {
-    email: {
-      regExp: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      msg: "example@gmail.com (min 10 characters, max 40 characters)",
-      min: 10,
-      max: 40,
-    },
-    password: {
-      regExp:
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[#?!@$%^&*-])[A-Za-z\d#?!@$%^&*-]{8,}$/,
-      msg: "Min 8 characters, max 30 characters, at least one letter, number and special character",
-      min: 8,
-      max: 30,
-    },
-  };
 
   const router = useRouter();
 
@@ -67,43 +43,6 @@ export default function FormComponent({
     onSubmit(values);
     localStorage.setItem(`token`, `test`);
     router.push("/dashboard");
-  };
-
-  // under refactoring
-  const validate = (values: Values) => {
-    let errors: Values = {};
-
-    Object.entries(values).forEach((el, index) => {
-      if (el[1] === "" && inputs[index].required) {
-        errors[inputs[index].id as keyof Values] = "This is required";
-        //
-      } else if (
-        el[1] !== "" &&
-        inputs[index].required &&
-        !inputs[index].id.toLowerCase().includes("confirmation")
-      ) {
-        Object.entries(validation).forEach((input) => {
-          if (
-            el[0].toLowerCase().includes(input[0].toLowerCase()) &&
-            (!input[1].regExp.test(el[1]) ||
-              (input[1].min && el[1].length < input[1].min) ||
-              (input[1].max && el[1].length > input[1].max))
-          ) {
-            errors[
-              inputs[index].id as keyof Values
-            ] = `Invalid ${inputs[index].type}`;
-          }
-        });
-      } else if (inputs[index].id.toLowerCase().includes("confirmation")) {
-        Object.entries(values).forEach((ele, ind) => {
-          if (index - 1 === ind && ele[1] !== el[1]) {
-            errors[inputs[index].id as keyof Values] = `Password doesn't match`;
-          }
-        });
-      }
-    });
-
-    return errors;
   };
 
   return (
@@ -119,7 +58,7 @@ export default function FormComponent({
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        validate={validate}
+        validate={(values) => validate(values, inputs)}
       >
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
@@ -136,17 +75,13 @@ export default function FormComponent({
                   {(msg) => (
                     <span className="text-danger py-1">
                       {msg}{" "}
-                      {Object.entries(validation).map(
-                        (input, index) =>
-                          input[0] == el.type &&
-                          msg.toLowerCase().includes("invalid") && (
-                            <div key={index} className="validation-msg-btn">
-                              <span>?</span>
-                              <span className="validation-msg">
-                                {input[1].msg}
-                              </span>
-                            </div>
-                          )
+                      {validation[el.type as keyof ValidationTypes] && (
+                        <div key={el.id} className="validation-msg-btn">
+                          <span>?</span>
+                          <span className="validation-msg">
+                            {validation[el.type as keyof ValidationTypes].msg}
+                          </span>
+                        </div>
                       )}
                     </span>
                   )}
