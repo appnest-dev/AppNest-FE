@@ -11,16 +11,22 @@ export default function Section({ title, list }: props) {
     <section className="d-flex flex-column gap-1">
       <h2 className="fs-6">{title}</h2>
 
-      {list.map((el, index) => (
-        <Accordion flush className="bg-transparent" key={index}>
-          <Accordion.Item eventKey="0" className="bg-transparent">
-            <Accordion.Header>{el.mainTitle}</Accordion.Header>
+      <Accordion flush className="bg-transparent">
+        {list.map((el, index) => (
+          <Accordion.Item
+            eventKey={String(index)}
+            className="bg-transparent"
+            key={index}
+          >
+            <Accordion.Header className="bg-transparent">
+              {el.mainTitle}
+            </Accordion.Header>
 
             <Accordion.Body className="p-0">
               <ListGroup variant="flush" className="m-0">
                 {el.listItems?.map((item, index) => (
                   <Link key={index} href={item.href}>
-                    <ListGroup.Item className="bg-transparent">
+                    <ListGroup.Item className="bg-transparent border-0">
                       {item.title}
                     </ListGroup.Item>
                   </Link>
@@ -28,8 +34,8 @@ export default function Section({ title, list }: props) {
               </ListGroup>
             </Accordion.Body>
           </Accordion.Item>
-        </Accordion>
-      ))}
+        ))}
+      </Accordion>
     </section>
   );
 }

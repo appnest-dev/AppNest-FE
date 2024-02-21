@@ -5,7 +5,7 @@ export default function Submit({ title }: { title: string }) {
     <Button
       variant="light"
       type="submit"
-      className="mt-4 w-100 py-2 fw-semibold"
+      className="mt-4 w-100 p-2 fw-semibold"
     >
       {title}
     </Button>

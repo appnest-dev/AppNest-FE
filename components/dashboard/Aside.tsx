@@ -16,7 +16,7 @@ export default function Aside() {
 
   return (
     <aside className="d-flex flex-column h-screen bg-light p-4 gap-4">
-      <Image src={hLogo} alt="App Nest" className="logo" />
+      <Image src={hLogo} alt="App Nest" className="logo w-100" />
       <h6 className="text-danger">Trial Launch</h6>
 
       <Logout />
@@ -62,6 +62,15 @@ export default function Aside() {
           },
         ]}
       />
+
+      <small className="position-absolute bottom-0 start-0 m-3">
+        By{" "}
+        <a href="https://www.alembicsoft.com/" target="_blank">
+          AlembicSoft
+        </a>
+        <br />
+        All Rights Reserved For AppNest
+      </small>
     </aside>
   );
 }
