@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import Logout from "./Logout";
 import { Button } from "react-bootstrap";
+import Link from "next/link";
 
 export default function Aside() {
   useEffect(() => {
@@ -18,7 +19,9 @@ export default function Aside() {
       <Image src={hLogo} alt="App Nest" className="logo" />
       <h6 className="text-danger">Trial Launch</h6>
 
-      <h2 className="fs-5 fw-semibold">Dashboard</h2>
+      <Logout />
+
+      <Link href="/dashboard">Dashboard</Link>
 
       <Section
         title="Per Project"
@@ -59,8 +62,6 @@ export default function Aside() {
           },
         ]}
       />
-
-      <Logout />
     </aside>
   );
 }
