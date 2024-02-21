@@ -28,7 +28,7 @@ export default function Input({
         {title}
         {required && <span className="required-star"> * </span>}
       </Form.Label>
-      <Field
+      <Form.Control
         type={type}
         id={id}
         placeholder={placeholder}

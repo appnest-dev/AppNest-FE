@@ -6,6 +6,7 @@ import Section from "./Section";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import Logout from "./Logout";
+import { Button } from "react-bootstrap";
 
 export default function Aside() {
   useEffect(() => {
@@ -15,7 +16,9 @@ export default function Aside() {
   return (
     <aside className="d-flex flex-column h-screen bg-gray p-4 gap-4">
       <Image src={hLogo} alt="App Nest" className="logo" />
-      <button className="text-danger trial">Trial Launch</button>
+      <Button variant="link" className="text-danger">
+        Trial Launch
+      </Button>
 
       <h2 className="fs-5 fw-semibold">Dashboard</h2>
 

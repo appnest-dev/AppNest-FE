@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { Button } from "react-bootstrap";
 
 export default function Logout() {
   const router = useRouter();
@@ -11,11 +12,8 @@ export default function Logout() {
   };
 
   return (
-    <button
-      onClick={logout}
-      style={{ backgroundColor: "#a80d00", color: "white" }}
-    >
+    <Button variant="danger" onClick={logout} className="p-2">
       Logout
-    </button>
+    </Button>
   );
 }

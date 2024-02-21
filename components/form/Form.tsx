@@ -11,6 +11,7 @@ import { redirect, useRouter } from "next/navigation";
 import { Values, validate } from "./functions/validate";
 import { ValidationTypes, validation } from "@/utils/consts";
 import { generateInitialValue } from "./functions/generateInitialValue";
+import { Button } from "react-bootstrap";
 
 type Props = {
   title: string;
@@ -50,9 +51,9 @@ export default function FormComponent({
       <h2 className="text-center fs-5 fw-semibold pb-4">{title}</h2>
 
       {google && (
-        <button className="mt-2 bg-gray w-100 py-2 fw-semibold">
+        <Button variant="secondary" className="mt-2 w-100 py-2 fw-semibold">
           Continue with Google
-        </button>
+        </Button>
       )}
 
       <Formik

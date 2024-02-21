@@ -1,7 +1,13 @@
+import { Button } from "react-bootstrap";
+
 export default function Submit({ title }: { title: string }) {
   return (
-    <button type="submit" className="mt-4 bg-gray w-100 py-2 fw-semibold">
+    <Button
+      variant="secondary"
+      type="submit"
+      className="mt-4 w-100 py-2 fw-semibold"
+    >
       {title}
-    </button>
+    </Button>
   );
 }
