@@ -5,11 +5,14 @@ export type InputProps = {
   type: string;
   title: string;
   id: string;
-  placeholder: string;
+  placeholder?: string;
   min?: number;
   max?: number;
-  required: boolean;
+  required?: boolean;
   confirmationId?: string;
+};
+
+type ControlledInputProps = {
   handleChange: (e: object) => void;
   values: any;
 };
@@ -25,7 +28,7 @@ export default function Input({
   confirmationId,
   handleChange,
   values,
-}: InputProps) {
+}: InputProps & ControlledInputProps) {
   return (
     <Form.Group className="d-flex flex-column">
       <Form.Label htmlFor={id} className="fw-semibold">
@@ -33,6 +36,7 @@ export default function Input({
         {required && <span className="required-star"> * </span>}
       </Form.Label>
       <Form.Control
+        as={Field}
         type={type}
         id={id}
         onChange={handleChange}
