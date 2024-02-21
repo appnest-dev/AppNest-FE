@@ -16,7 +16,7 @@ export default function Aside() {
 
   return (
     <aside className="d-flex flex-column h-screen bg-light p-4 gap-4">
-      <Image src={hLogo} alt="App Nest" className="logo w-100" />
+      <Image src={hLogo} alt="App Nest" />
       <h6 className="text-danger">Trial Launch</h6>
 
       <Logout />

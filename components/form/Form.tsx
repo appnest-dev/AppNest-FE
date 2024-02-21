@@ -53,7 +53,7 @@ export default function FormComponent({
       <h2 className="text-center fs-5 fw-semibold pb-4">{title}</h2>
 
       {google && (
-        <Button variant="light" className="my-2 p-0 w-100 fw-semibold">
+        <Button variant="light" className="my-2 p-2 w-100 fw-semibold">
           <Image
             src={Google}
             alt="google"
