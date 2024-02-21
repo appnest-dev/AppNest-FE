@@ -12,6 +12,8 @@ import { Values, validate } from "./functions/validate";
 import { ValidationTypes, validation } from "@/utils/consts";
 import { generateInitialValue } from "./functions/generateInitialValue";
 import { Button } from "react-bootstrap";
+import Google from "@/public/google.png";
+import Image from "next/image";
 
 type Props = {
   title: string;
@@ -52,6 +54,7 @@ export default function FormComponent({
 
       {google && (
         <Button variant="light" className="my-2 w-100 fw-semibold">
+          <Image src={Google} alt="google" width={25} height={25} />
           Continue with Google
         </Button>
       )}

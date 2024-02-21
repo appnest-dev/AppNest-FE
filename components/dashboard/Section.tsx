@@ -10,15 +10,19 @@ export default function Section({ title, list }: props) {
   return (
     <section className="d-flex flex-column gap-1">
       <h2 className="fs-6">{title}</h2>
+
       {list.map((el, index) => (
-        <Accordion flush key={index}>
-          <Accordion.Item eventKey="0">
+        <Accordion flush className="bg-transparent" key={index}>
+          <Accordion.Item eventKey="0" className="bg-transparent">
             <Accordion.Header>{el.mainTitle}</Accordion.Header>
-            <Accordion.Body>
-              <ListGroup>
+
+            <Accordion.Body className="p-0">
+              <ListGroup variant="flush" className="m-0">
                 {el.listItems?.map((item, index) => (
                   <Link key={index} href={item.href}>
-                    <ListGroup.Item>{item.title}</ListGroup.Item>
+                    <ListGroup.Item className="bg-transparent">
+                      {item.title}
+                    </ListGroup.Item>
                   </Link>
                 ))}
               </ListGroup>

@@ -43,7 +43,7 @@ export default function Input({
         value={values[id]}
         placeholder={placeholder}
         name={id}
-        className="bg-gray px-3 py-2"
+        className="bg-light px-3 py-2"
       />
     </Form.Group>
   );
