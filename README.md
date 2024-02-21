@@ -1,7 +1,9 @@
-# How to start?
+# AppNest Frontend
 
-`git clone https://github.com/MazenAdel1/sketcher.git`
+Frontend app of AppNest software, built with Next.Js
 
-`npm install`
+## How to start?
 
-`npm run dev`
+- `git clone https://github.com/MazenAdel1/sketcher.git`
+- `npm install`
+- `npm run dev`
