@@ -10,6 +10,8 @@ export type InputProps = {
   max?: number;
   required: boolean;
   confirmationId?: string;
+  handleChange: (e: object) => void;
+  values: any;
 };
 
 export default function Input({
@@ -21,6 +23,8 @@ export default function Input({
   max,
   required,
   confirmationId,
+  handleChange,
+  values,
 }: InputProps) {
   return (
     <Form.Group className="d-flex flex-column">
@@ -31,6 +35,8 @@ export default function Input({
       <Form.Control
         type={type}
         id={id}
+        onChange={handleChange}
+        value={values[id]}
         placeholder={placeholder}
         name={id}
         className="bg-gray px-3 py-2"

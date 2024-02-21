@@ -51,7 +51,7 @@ export default function FormComponent({
       <h2 className="text-center fs-5 fw-semibold pb-4">{title}</h2>
 
       {google && (
-        <Button variant="secondary" className="mt-2 w-100 py-2 fw-semibold">
+        <Button variant="light" className="my-2 w-100 fw-semibold">
           Continue with Google
         </Button>
       )}
@@ -61,7 +61,7 @@ export default function FormComponent({
         onSubmit={handleSubmit}
         validate={(values) => validate(values, inputs)}
       >
-        {({ handleSubmit }) => (
+        {({ handleSubmit, handleChange, values }) => (
           <Form onSubmit={handleSubmit}>
             {inputs.map((el) => (
               <div key={el.id} className="field">
@@ -71,6 +71,8 @@ export default function FormComponent({
                   title={el.title}
                   placeholder={el.placeholder}
                   required={el.required}
+                  handleChange={(e) => handleChange(e)}
+                  values={values}
                 />
                 <ErrorMessage name={el.id}>
                   {(msg) => (
