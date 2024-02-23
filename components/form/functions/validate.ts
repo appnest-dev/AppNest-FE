@@ -36,7 +36,7 @@ export const validate = (values: Values, inputs: InputProps[]) => {
 
     // validation check
     const validationType =
-      validation[`${inputs[index].type as keyof ValidationTypes}`];
+      validation[inputs[index].type as keyof ValidationTypes];
 
     if (
       validationType &&
