@@ -4,15 +4,6 @@
   margin: 0;
 }
 
-.bg-gray {
-  background-color: #ededed;
-  transition: 0.2s;
-}
-
-:not(aside).bg-gray:hover {
-  background-color: #dbdbdb;
-}
-
 button,
 input {
   border: none;
@@ -21,11 +12,11 @@ input {
 
 a {
   text-decoration: none;
-  color: unset;
+  color: inherit;
 }
 
 a:hover {
-  color: unset;
+  color: inherit;
 }
 
 .h-screen {
@@ -40,13 +31,4 @@ ul {
   list-style: none;
   padding: 0 !important;
   margin: 0 !important;
-}
-
-.bg-gradient-gray {
-  background: rgb(201, 201, 201);
-  background: linear-gradient(
-    133deg,
-    rgba(201, 201, 201, 1) 0%,
-    rgba(255, 255, 255, 1) 69%
-  );
 }

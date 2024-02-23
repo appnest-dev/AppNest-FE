@@ -5,7 +5,7 @@ import "./page.css";
 
 export default function Home() {
   return (
-    <main className="d-flex flex-column bg-gradient-gray justify-content-center align-items-center gap-4 min-h-screen">
+    <main className="d-flex flex-column bg-light justify-content-center align-items-center gap-4 min-h-screen">
       <HLogo width={300} />
 
       <h3>Welcome to AppNest</h3>
