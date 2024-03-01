@@ -1,41 +1,28 @@
-import Link from "next/link";
-import { Accordion, ListGroup } from "react-bootstrap";
+"use client";
 
-type props = {
+import React from "react";
+import Modal, { ModalProps } from "./modal/Modal";
+
+type Props = {
+  children: React.ReactNode;
   title: string;
-  list: { mainTitle: string; listItems: { title: string; href: string }[] }[];
+  modalProps?: ModalProps;
 };
 
-export default function Section({ title, list }: props) {
+export default function Section({ children, title, modalProps }: Props) {
   return (
-    <section className="d-flex flex-column gap-1">
-      <h2 className="fs-6">{title}</h2>
-
-      <Accordion flush className="bg-transparent">
-        {list.map((el, index) => (
-          <Accordion.Item
-            eventKey={String(index)}
-            className="bg-transparent"
-            key={index}
-          >
-            <Accordion.Header className="bg-transparent">
-              {el.mainTitle}
-            </Accordion.Header>
-
-            <Accordion.Body className="p-0">
-              <ListGroup variant="flush" className="m-0">
-                {el.listItems?.map((item, index) => (
-                  <Link key={index} href={item.href}>
-                    <ListGroup.Item className="bg-transparent border-0">
-                      {item.title}
-                    </ListGroup.Item>
-                  </Link>
-                ))}
-              </ListGroup>
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
-      </Accordion>
+    <section className="d-flex flex-column w-100 gap-2 p-4">
+      <div className="d-flex justify-content-between">
+        <h2>{title}</h2>
+        {modalProps && (
+          <Modal
+            inputs={modalProps.inputs}
+            title={modalProps.title}
+            submit={modalProps.submit}
+          />
+        )}
+      </div>
+      {children}
     </section>
   );
 }
