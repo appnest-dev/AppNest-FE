@@ -1,4 +1,4 @@
-import Aside from "@/components/dashboard/Aside";
+import Aside from "@/components/dashboard/aside/Aside";
 import { Metadata } from "next";
 import { ReactNode } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
