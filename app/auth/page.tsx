@@ -1,8 +1,11 @@
 "use client";
 
 import Form from "@/components/form/Form";
+import { useRouter } from "next/navigation";
 
-export default function page() {
+export default function Page() {
+  const router = useRouter();
+
   const actions = [
     { title: "Forgot Password?", link: "/auth/forgot" },
     { title: "Register Now", link: "/auth/register" },
@@ -30,7 +33,11 @@ export default function page() {
       title="Login"
       submitTitle="Login"
       actions={actions}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        console.log(values);
+        localStorage.setItem(`token`, `test`);
+        router.push("/dashboard");
+      }}
       google
       inputs={inputs}
     />
