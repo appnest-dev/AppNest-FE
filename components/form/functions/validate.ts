@@ -10,7 +10,9 @@ type Auth = {
   OTC?: string;
 };
 
-export type Values = Auth;
+export type Values = Auth & {
+  [key: string]: string | number | boolean;
+};
 
 const between = (number: number, min: number, max: number) =>
   number >= min && number <= max;
@@ -40,8 +42,12 @@ export const validate = (values: Values, inputs: InputProps[]) => {
 
     if (
       validationType &&
-      (!validationType.regExp.test(inputValue) ||
-        !between(inputValue.length, validationType.min, validationType.max))
+      (!validationType.regExp.test(inputValue as string) ||
+        !between(
+          (inputValue as string).length,
+          validationType.min,
+          validationType.max
+        ))
     ) {
       return (errors[input] = `Invalid ${inputs[index].type}`);
     }
