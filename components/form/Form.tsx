@@ -4,10 +4,9 @@ import { Formik, Form, ErrorMessage } from "formik";
 
 import "./styles.css";
 import ActionLink, { Actions } from "./ActionLink";
-import React, { useEffect } from "react";
+import React from "react";
 import Input, { InputProps } from "./Input";
 import Submit from "./Submit";
-import { redirect, useRouter } from "next/navigation";
 import { Values, validate } from "./functions/validate";
 import { ValidationTypes, validation } from "@/utils/consts";
 import { generateInitialValue } from "./functions/generateInitialValue";
@@ -17,11 +16,12 @@ import Image from "next/image";
 
 type Props = {
   title: string;
-  actions: Actions[];
+  actions?: Actions[];
   onSubmit: (values: Values) => void;
   google?: boolean;
   inputs: InputProps[];
   submitTitle: string;
+  className?: string;
 };
 
 export default function FormComponent({
@@ -31,25 +31,18 @@ export default function FormComponent({
   google,
   inputs,
   submitTitle,
+  className,
 }: Props) {
   const initialValues = inputs.reduce((prev, curr) => {
     return { ...prev, [curr.id]: generateInitialValue(curr.type) };
   }, {});
 
-  const router = useRouter();
-
-  useEffect(() => {
-    localStorage.getItem(`token`) && redirect("/dashboard");
-  }, []);
-
   const handleSubmit = (values: Values) => {
     onSubmit(values);
-    localStorage.setItem(`token`, `test`);
-    router.push("/dashboard");
   };
 
   return (
-    <section className="form mx-auto bg-white">
+    <section className={`form mx-auto bg-white ${className && className}`}>
       <h2 className="text-center fs-5 fw-semibold pb-4">{title}</h2>
 
       {google && (
@@ -105,11 +98,13 @@ export default function FormComponent({
         )}
       </Formik>
 
-      <div className="d-flex justify-content-between pt-5">
-        {actions.map((key) => (
-          <ActionLink key={key.title} link={key.link} title={key.title} />
-        ))}
-      </div>
+      {actions && (
+        <div className="d-flex justify-content-between pt-5">
+          {actions?.map((key) => (
+            <ActionLink key={key.title} link={key.link} title={key.title} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
