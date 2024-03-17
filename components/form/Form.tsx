@@ -34,7 +34,10 @@ export default function FormComponent({
   className,
 }: Props) {
   const initialValues = inputs.reduce((prev, curr) => {
-    return { ...prev, [curr.id]: generateInitialValue(curr.type) };
+    return {
+      ...prev,
+      [curr.id]: curr.value || generateInitialValue(curr.type),
+    };
   }, {});
 
   const handleSubmit = (values: Values) => {
@@ -75,6 +78,7 @@ export default function FormComponent({
                   required={el.required}
                   handleChange={(e) => handleChange(e)}
                   values={values}
+                  disabled={el.disabled}
                 />
                 <ErrorMessage name={el.id}>
                   {(msg) => (
