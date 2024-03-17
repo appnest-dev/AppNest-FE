@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function layout({ children }: { children: ReactNode }) {
   return (
-    <main className="d-flex gap-2 h-screen">
+    <main className="d-flex gap-2" style={{ minHeight: "100dvh" }}>
       <Aside />
       {children}
     </main>
