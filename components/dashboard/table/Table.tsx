@@ -1,11 +1,14 @@
 import TableComp from "react-bootstrap/Table";
+import Paginator from "./Paginator";
+import Modal from "../modal/Modal";
+import { toCamelCase } from "@/utils/functions";
 
-type Props = {
+export type TableProps = {
   heads: string[];
   rows: string[][];
 };
 
-export default function Table({ heads, rows }: Props) {
+export default function Table({ heads, rows }: TableProps) {
   return (
     <>
       <TableComp striped>
@@ -15,6 +18,7 @@ export default function Table({ heads, rows }: Props) {
             {heads.map((item, index) => (
               <th key={index}>{item}</th>
             ))}
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -24,10 +28,45 @@ export default function Table({ heads, rows }: Props) {
               {row.map((item, ind) => (
                 <td key={ind}>{item === "" ? "-" : item}</td>
               ))}
+              <td className="d-flex gap-3">
+                <Modal
+                  buttonTitle="U"
+                  inputs={heads.map((headCell, ind) => {
+                    return {
+                      id: toCamelCase(headCell),
+                      title: headCell,
+                      type: "text",
+                      value: row[ind],
+                    };
+                  })}
+                  title="Update"
+                  submit={async (values) => {
+                    console.log(values);
+                  }}
+                />
+
+                <Modal
+                  buttonTitle="D"
+                  inputs={heads.map((headCell, ind) => {
+                    return {
+                      id: toCamelCase(headCell),
+                      title: headCell,
+                      type: "text",
+                      value: row[ind],
+                      disabled: true,
+                    };
+                  })}
+                  title="Delete"
+                  submit={async (values) => {
+                    console.log(values);
+                  }}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
       </TableComp>
+      <Paginator />
     </>
   );
 }
