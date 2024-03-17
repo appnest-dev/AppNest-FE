@@ -10,6 +10,8 @@ export type InputProps = {
   max?: number;
   required?: boolean;
   confirmationId?: string;
+  value?: string;
+  disabled?: boolean;
 };
 
 type ControlledInputProps = {
@@ -28,6 +30,7 @@ export default function Input({
   confirmationId,
   handleChange,
   values,
+  disabled = false,
 }: InputProps & ControlledInputProps) {
   return (
     <Form.Group className="d-flex flex-column">
@@ -44,6 +47,7 @@ export default function Input({
         placeholder={placeholder}
         name={id}
         className="bg-light px-3 py-2"
+        disabled={disabled}
       />
     </Form.Group>
   );
