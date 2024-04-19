@@ -4,7 +4,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 
 import "./styles.css";
 import ActionLink, { Actions } from "./ActionLink";
-import React from "react";
+import React, { useState } from "react";
 import Input, { InputProps } from "./Input";
 import Submit from "./Submit";
 import { Values, validate } from "./functions/validate";
@@ -39,9 +39,14 @@ export default function FormComponent({
       [curr.id]: curr.value || generateInitialValue(curr.type),
     };
   }, {});
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (values: Values) => {
-    onSubmit(values);
+    setIsLoading(true);
+    setTimeout(() => {
+      onSubmit(values);
+      setIsLoading(false);
+    }, 1000);
   };
 
   return (
@@ -97,7 +102,7 @@ export default function FormComponent({
                 </ErrorMessage>
               </div>
             ))}
-            <Submit title={submitTitle} />
+            <Submit title={submitTitle} disabled={isLoading} />
           </Form>
         )}
       </Formik>
