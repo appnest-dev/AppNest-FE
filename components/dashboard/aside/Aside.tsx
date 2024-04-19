@@ -13,59 +13,66 @@ export default function Aside() {
     !localStorage.getItem(`token`) && redirect("/auth");
   }, []);
 
+  const data = [
+    {
+      title: "Per Project",
+      list: [
+        {
+          mainTitle: "Project 1",
+          listItems: [
+            { title: "M | Modals", href: "#" },
+            { title: "U | User Types", href: "#" },
+          ],
+        },
+        {
+          mainTitle: "Project 2",
+          listItems: [
+            { title: "M | Modals", href: "#" },
+            { title: "U | User Types", href: "#" },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Per Service",
+      list: [
+        {
+          mainTitle: "M | Modals",
+          listItems: [
+            { title: "project 1", href: "#" },
+            { title: "project 2", href: "#" },
+          ],
+        },
+        {
+          mainTitle: "U | User Types",
+          listItems: [
+            { title: "project 1", href: "#" },
+            { title: "project 2", href: "#" },
+          ],
+        },
+      ],
+    },
+  ];
+
   return (
     <aside
-      className="d-flex flex-column h-screen bg-light p-4 gap-4"
-      style={{ overflowX: "hidden" }}
+      className="d-flex flex-column h-screen bg-light overflow-y-hidden"
+      style={{ overflowX: "hidden", position: "relative" }}
     >
-      <Image src={hLogo} alt="App Nest" className="logo" />
-      <h6 className="text-danger">Trial Launch</h6>
+      <div className="d-flex flex-column h-100 gap-4 overflow-y-auto p-4">
+        <Image src={hLogo} alt="App Nest" className="logo" />
+        <h6 className="text-danger">Trial Launch</h6>
 
-      <Logout />
+        <Logout />
 
-      <Link href="/dashboard">Dashboard</Link>
+        <Link href="/dashboard">Dashboard</Link>
 
-      <Section
-        title="Per Project"
-        list={[
-          {
-            mainTitle: "Project 1",
-            listItems: [
-              { title: "M | Modals", href: "#" },
-              { title: "U | User Types", href: "#" },
-            ],
-          },
-          {
-            mainTitle: "Project 2",
-            listItems: [
-              { title: "M | Modals", href: "#" },
-              { title: "U | User Types", href: "#" },
-            ],
-          },
-        ]}
-      />
+        {data.map((section, index) => (
+          <Section key={index} title={section.title} list={section.list} />
+        ))}
+      </div>
 
-      <Section
-        title="Per Service"
-        list={[
-          {
-            mainTitle: "M | Modals",
-            listItems: [
-              { title: "project 1", href: "#" },
-              { title: "project 2", href: "#" },
-            ],
-          },
-          {
-            mainTitle: "U | User Types",
-            listItems: [
-              { title: "project 1", href: "#" },
-              { title: "project 2", href: "#" },
-            ],
-          },
-        ]}
-      />
-
-      <small className="position-absolute bottom-0 start-0 m-3 bg-light">
+      <small className="px-3 py-2" style={{ zIndex: 10, width: "inherit" }}>
         By{" "}
         <a href="https://www.alembicsoft.com/" target="_blank">
           AlembicSoft
