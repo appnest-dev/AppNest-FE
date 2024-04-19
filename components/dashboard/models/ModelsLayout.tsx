@@ -3,71 +3,74 @@
 import { Accordion } from "react-bootstrap";
 import TableTemplate from "../TableTemplate";
 import React from "react";
+import { InputProps } from "@/components/form/Input";
 
 export type ModelProps = {
   title: string;
-  properties: {
-    uniqueKey: string;
-    name: string;
-    type: string;
-    required: string;
-    defaultValue: string;
-    regex: string;
-    unique: string;
-  }[];
-  relations: {
-    modal1: string;
-    modal2: string;
-    relation: string;
-  }[];
-  endpoints: {
-    name: string;
-    coverage: string;
-    type: string;
-  }[];
+  properties: Array<{ [key: string]: string | number | boolean }>;
+  relations: Array<{ [key: string]: string | number | boolean }>;
+  endpoints: Array<{ [key: string]: string | number | boolean }>;
+};
+
+type Props = {
+  properties: InputProps[];
+  relations: InputProps[];
+  endpoints: InputProps[];
 };
 
 const ModelsLayout: React.FC<{ data: ModelProps[] }> = ({ data }) => {
   const titles = [
-    { table: "Properties", modal: "Create Property" },
-    { table: "Relations", modal: "Create Relation" },
-    { table: "Endpoints", modal: "Create Endpoint" },
+    { id: "properties", table: "Properties", modal: "Create Property" },
+    { id: "relations", table: "Relations", modal: "Create Relation" },
+    { id: "endpoints", table: "Endpoints", modal: "Create Endpoint" },
   ];
 
-  const heads = [
-    [
-      "Unique Key",
-      "Name",
-      "Type",
-      "Required?",
-      "Default Value",
-      "Regex",
-      "Unique?",
+  const heads: Props = {
+    properties: [
+      { id: "uniqueKey", title: "Unique Key", type: "text", required: true },
+      { id: "name", title: "Name", type: "text", required: true },
+      { id: "type", title: "Type", type: "text", required: true },
+      { id: "required", title: "Required?", type: "switch" },
+      {
+        id: "defaultValue",
+        title: "Default Value",
+        type: "text",
+        required: false,
+      },
+      { id: "regex", title: "Regex", type: "text", required: true },
+      { id: "unique", title: "Unique?", type: "switch" },
     ],
-    ["Modal 1", "Modal 2", "Relation"],
-    ["Name", "Coverage", "Type"],
-  ];
+    relations: [
+      { id: "modal1", title: "Modal 1", type: "text", required: true },
+      { id: "modal2", title: "Modal 2", type: "text", required: true },
+      { id: "relation", title: "Relation", type: "text", required: true },
+    ],
+    endpoints: [
+      { id: "name", title: "Name", type: "text", required: true },
+      { id: "coverage", title: "Coverage", type: "text", required: true },
+      { id: "type", title: "Type", type: "text", required: true },
+    ],
+  };
+
   return (
     <>
-      {data.map((values, mainIndex) => (
+      {data.map((values: ModelProps, mainIndex) => (
         <Accordion alwaysOpen key={values.title}>
           <Accordion.Item eventKey={`${mainIndex}`}>
             <Accordion.Header>{values.title}</Accordion.Header>
             <Accordion.Body>
-              {[values.properties, values.relations, values.endpoints].map(
-                (value, index) => (
+              {values[titles[mainIndex].id as keyof Props].map(
+                (_, index, value) => (
                   <TableTemplate
                     key={index}
-                    heads={heads[index]}
-                    rows={value.map((row) => Object.values(row))}
                     title={titles[index].table}
+                    heads={heads[titles[mainIndex].id as keyof Props].map(
+                      (head) => head
+                    )}
+                    rows={value}
                     modalProps={{
                       title: titles[index].modal,
-                      inputs: heads[index].map((key) => ({
-                        id: key,
-                        type: "text",
-                        title: key,
-                      })),
+                      inputs: heads[titles[mainIndex].id as keyof Props],
                       submit: async (values) => {
                         console.log(values);
                       },
