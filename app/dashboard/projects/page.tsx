@@ -2,13 +2,45 @@ import TableTemplate from "@/components/dashboard/TableTemplate";
 import { ModalProps } from "@/components/dashboard/modal/Modal";
 import { TableProps } from "@/components/dashboard/table/Table";
 import { getAllProjects } from "@/app/services/example";
+import { InputProps } from "@/components/form/Input";
+import { generatePlaceholder } from "@/utils/functions";
 
 export default async function page() {
-  const heads = ["projects", "Modals", "User Types", "Last Updated", "Details"];
+  const heads: InputProps[] = [
+    {
+      id: "projects",
+      title: "projects",
+      type: "text",
+      required: true,
+      placeholder: "",
+    },
+    {
+      id: "modals",
+      title: "Modals",
+      type: "text",
+      required: true,
+    },
+    {
+      id: "userTypes",
+      title: "User Types",
+      type: "text",
+      required: true,
+    },
+    {
+      id: "lastUpdated",
+      title: "Last Updated",
+      type: "text",
+      required: true,
+    },
+    {
+      id: "details",
+      title: "Details",
+      type: "text",
+      required: true,
+    },
+  ];
 
-  const rows = await getAllProjects().then((res) =>
-    res.map((row) => Object.values(row))
-  );
+  const rows = await getAllProjects().then((res) => res);
 
   const tableProps: TableProps = {
     heads: heads,

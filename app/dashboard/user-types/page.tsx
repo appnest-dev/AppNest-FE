@@ -2,13 +2,35 @@ import { getAllUserTypes } from "@/app/services/example";
 import TableTemplate from "@/components/dashboard/TableTemplate";
 import { ModalProps } from "@/components/dashboard/modal/Modal";
 import { TableProps } from "@/components/dashboard/table/Table";
+import { InputProps } from "@/components/form/Input";
+import { generatePlaceholder } from "@/utils/functions";
 
 export default async function page() {
-  const heads = ["Unique Key", "Name", "Description"];
-
-  const rows = await getAllUserTypes().then((res) =>
-    res.map((row) => Object.values(row))
-  );
+  const placeholder = generatePlaceholder("Your Project User Type");
+  const heads: InputProps[] = [
+    {
+      id: "uniqueKey",
+      title: "Unique Key",
+      type: "text",
+      required: true,
+      placeholder: placeholder("Unique Key"),
+    },
+    {
+      id: "name",
+      title: "Name",
+      type: "text",
+      required: true,
+      placeholder: placeholder("Name"),
+    },
+    {
+      id: "description",
+      title: "Description",
+      type: "text",
+      required: true,
+      placeholder: placeholder("Description"),
+    },
+  ];
+  const rows = await getAllUserTypes().then((res) => res);
 
   const tableProps: TableProps = {
     heads: heads,
@@ -17,15 +39,7 @@ export default async function page() {
 
   const modalProps: ModalProps = {
     title: "Create User Type",
-    inputs: heads.map((head) => {
-      return {
-        id: head,
-        title: head,
-        type: "text",
-        placeholder: `Your Project User Type ${head}`,
-        required: true,
-      };
-    }),
+    inputs: heads,
     submit: async (values) => {
       "use server";
       console.log(values);

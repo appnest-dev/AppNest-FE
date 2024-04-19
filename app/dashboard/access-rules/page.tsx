@@ -2,14 +2,46 @@ import TableTemplate from "@/components/dashboard/TableTemplate";
 import { ModalProps } from "@/components/dashboard/modal/Modal";
 import { TableProps } from "@/components/dashboard/table/Table";
 import { getAllAccessRules } from "@/app/services/example";
-import { removeMark, toCamelCase } from "@/utils/functions";
+import { generatePlaceholder } from "@/utils/functions";
+import { InputProps } from "@/components/form/Input";
 
 export default async function page() {
-  const heads = ["Modals", "Endpoint", "User Types", "Have Access?", "Fixed?"];
+  const placeholder = generatePlaceholder("Your Access Rule");
+  const heads: InputProps[] = [
+    {
+      id: "modals",
+      title: "Modals",
+      type: "text",
+      required: true,
+      placeholder: placeholder("Modals"),
+    },
+    {
+      id: "endpoints",
+      title: "Endpoint",
+      type: "text",
+      required: true,
+      placeholder: placeholder("Endpoints"),
+    },
+    {
+      id: "userTypes",
+      title: "User Types",
+      type: "text",
+      required: true,
+      placeholder: placeholder("User Types"),
+    },
+    {
+      id: "haveAccess",
+      title: "Have Access?",
+      type: "switch",
+    },
+    {
+      id: "fixed",
+      title: "Fixed?",
+      type: "switch",
+    },
+  ];
 
-  const rows = await getAllAccessRules().then((res) =>
-    res.map((row) => Object.values(row))
-  );
+  const rows = await getAllAccessRules().then((res) => res);
 
   const tableProps: TableProps = {
     heads: heads,
@@ -18,15 +50,7 @@ export default async function page() {
 
   const modalProps: ModalProps = {
     title: "Create a project",
-    inputs: heads.map((head) => {
-      return {
-        id: head,
-        title: head,
-        type: "text",
-        placeholder: `Your Access Rule ${removeMark(head)}`,
-        required: true,
-      };
-    }),
+    inputs: heads,
     submit: async (values) => {
       "use server";
       console.log(values);
