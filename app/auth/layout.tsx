@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Stack } from "react-bootstrap";
 import HLogo from "@/components/HLogo";
 import TokenCheck from "../../components/form/functions/TokenCheck";
+import "./layout.css";
 
 export const metadata: Metadata = {
   title: "AppNest | Auth",
