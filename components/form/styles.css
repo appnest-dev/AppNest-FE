@@ -70,3 +70,15 @@
 .validation-msg-btn:hover:first-child {
   background-color: rgb(87, 87, 87);
 }
+
+.form-switch .form-check-input {
+  &:checked {
+    background-color: #202020;
+    border-color: #202020;
+  }
+  &:focus {
+    border-color: #b1b1b1;
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
+  }
+  transition: 0.2s ease-in-out;
+}
