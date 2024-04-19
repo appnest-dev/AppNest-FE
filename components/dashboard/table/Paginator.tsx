@@ -1,5 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { FormSelect, Pagination } from "react-bootstrap";
+import "./table.css";
 
 export default function Paginator() {
   const currentPageRef = useRef<HTMLLIElement>(null);
@@ -32,7 +33,9 @@ export default function Paginator() {
         <Pagination.First onClick={firstPage} />
         <Pagination.Prev onClick={prevPage} />
         <div className="d-flex align-items-center px-2 rounded-2">
-          <Pagination.Item ref={currentPageRef}>{currentPage}</Pagination.Item>
+          <Pagination.Item ref={currentPageRef} className="text-black">
+            {currentPage}
+          </Pagination.Item>
           <Pagination.Item disabled ref={fullPagesCount}>
             {fullPages}
           </Pagination.Item>
