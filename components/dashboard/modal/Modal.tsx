@@ -5,7 +5,6 @@ import Form from "../../form/Form";
 import { useRef } from "react";
 import { InputProps } from "@/components/form/Input";
 import { Values } from "@/components/form/functions/validate";
-import { removeMark, toCamelCase } from "@/utils/functions";
 
 export type ModalProps = {
   buttonTitle?: string;
@@ -21,10 +20,6 @@ export default function Modal({
   submit,
 }: ModalProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const newInputs = inputs.map((input) => ({
-    ...input,
-    id: toCamelCase(removeMark(input.id)),
-  }));
   return (
     <>
       <Button
@@ -45,9 +40,9 @@ export default function Modal({
           style={{ maxHeight: "100dvh" }}
         >
           <Button
-            variant="light"
-            style={{ width: 50 }}
-            className="align-self-end"
+            variant="secondary"
+            style={{ width: 50, zIndex: 10 }}
+            className="align-self-end position-absolute rounded-1 mt-3 me-4"
             onClick={() => {
               containerRef.current?.classList.replace("d-flex", "d-none");
               document.body.classList.remove("overflow-hidden");
@@ -58,7 +53,7 @@ export default function Modal({
           <Form
             title={title}
             className="mw-100 w-100 rounded-1 overflow-y-auto"
-            inputs={newInputs}
+            inputs={inputs}
             submitTitle="Submit"
             onSubmit={submit}
           />
