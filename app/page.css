@@ -1,8 +1,18 @@
-a {
-  background-color: white;
+a.auth-button {
   transition: 0.2s;
+  background-image: linear-gradient(to right, #e7e7e7, #bababa);
 }
 
-a:hover {
-  background-color: #f3f3f3;
+a.auth-button:hover {
+  box-shadow: 0 0 4px black;
+}
+
+.h-logo {
+  width: 600px;
+}
+
+@media (width <= 992px) {
+  .h-logo {
+    width: auto;
+  }
 }
