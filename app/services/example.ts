@@ -3,7 +3,7 @@ const demo = true;
 const mockProjectsList = [
   {
     id: "123-abc",
-    projects: "a",
+    title: "a",
     members: "X, y & Z",
     brandGuideline: "https://www.figma.com",
     uiux: "https://www.figma.com",
@@ -15,7 +15,7 @@ const mockProjectsList = [
   },
   {
     id: "123-abc",
-    projects: "a",
+    title: "a",
     members: "X, y & Z",
     brandGuideline: "https://www.figma.com",
     uiux: "https://www.figma.com",
@@ -27,7 +27,7 @@ const mockProjectsList = [
   },
   {
     id: "123-abc",
-    projects: "a",
+    title: "a",
     members: "X, y & Z",
     brandGuideline: "https://www.figma.com",
     uiux: "https://www.figma.com",
@@ -39,7 +39,7 @@ const mockProjectsList = [
   },
   {
     id: "123-abc",
-    projects: "a",
+    title: "a",
     members: "X, y & Z",
     brandGuideline: "https://www.figma.com",
     uiux: "https://www.figma.com",
@@ -51,7 +51,7 @@ const mockProjectsList = [
   },
   {
     id: "123-abc",
-    projects: "a",
+    title: "a",
     members: "X, y & Z",
     brandGuideline: "https://www.figma.com",
     uiux: "https://www.figma.com",
