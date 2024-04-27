@@ -28,6 +28,12 @@ export default async function page() {
       required: true,
     },
     {
+      id: "tasks",
+      title: "Tasks Manager URL",
+      type: "url",
+      required: true,
+    },
+    {
       id: "brandGuideline",
       title: "Brand Guideline URL",
       type: "url",
