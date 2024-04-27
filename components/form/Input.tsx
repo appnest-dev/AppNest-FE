@@ -13,6 +13,8 @@ export type InputProps = {
   confirmationId?: string;
   value?: string | boolean | number;
   disabled?: boolean;
+  excludeInForm?: boolean;
+  excludeInTable?: boolean;
 };
 
 type ControlledInputProps = {
