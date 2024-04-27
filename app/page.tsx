@@ -1,6 +1,13 @@
 import HLogo from "@/components/HLogo";
 import Link from "next/link";
+
 import "./page.css";
+
+declare global {
+  interface String {
+    capitalize(): string;
+  }
+}
 
 export default function Home() {
   return (
