@@ -22,13 +22,18 @@ export default function TableTemplate({
         {modalProps && (
           <Modal
             buttonTitle={modalProps.buttonTitle}
-            inputs={modalProps.inputs}
+            inputs={modalProps.inputs.filter(
+              ({ excludeInForm }) => !excludeInForm
+            )}
             title={modalProps.title}
             submit={modalProps.submit}
           />
         )}
       </div>
-      <Table heads={heads} rows={rows} />
+      <Table
+        heads={heads.filter(({ excludeInTable }) => !excludeInTable)}
+        rows={rows}
+      />
     </section>
   );
 }
