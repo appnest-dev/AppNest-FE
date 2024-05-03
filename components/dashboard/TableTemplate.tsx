@@ -19,9 +19,19 @@ export default function TableTemplate({
     <section className="d-flex flex-column w-100 gap-2 p-4">
       <div className="d-flex justify-content-between">
         <h2>{title}</h2>
-        {modalProps && <Modal {...modalProps} />}
+        {modalProps && (
+          <Modal
+            {...modalProps}
+            inputs={modalProps.inputs.filter(
+              ({ excludeInForm }) => !excludeInForm
+            )}
+          />
+        )}
       </div>
-      <Table {...tableProps} />
+      <Table
+        {...tableProps}
+        heads={tableProps.heads.filter(({ excludeInTable }) => !excludeInTable)}
+      />
     </section>
   );
 }

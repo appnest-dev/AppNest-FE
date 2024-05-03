@@ -14,6 +14,8 @@ export type InputProps = {
   value?: string | boolean | number;
   disabled?: boolean;
   checked?: boolean;
+  excludeInForm?: boolean;
+  excludeInTable?: boolean;
 };
 
 type ControlledInputProps = {
