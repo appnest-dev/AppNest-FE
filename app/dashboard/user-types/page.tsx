@@ -4,6 +4,7 @@ import { ModalProps } from "@/components/dashboard/modal/Modal";
 import { TableProps } from "@/components/dashboard/table/Table";
 import { InputProps } from "@/components/form/Input";
 import { generatePlaceholder } from "@/utils/functions";
+import { redirect } from "next/navigation";
 
 export default async function page() {
   const placeholder = generatePlaceholder("Your Project User Type");
@@ -35,12 +36,29 @@ export default async function page() {
   const tableProps: TableProps = {
     heads: heads,
     rows: rows,
+    onUpdate: async (values) => {
+      "use server";
+      console.log(values);
+    },
+    onDelete: async (values) => {
+      "use server";
+      console.log(values);
+    },
+    customActions: [
+      {
+        content: "S",
+        onClick: async () => {
+          "use server";
+          console.log("test");
+        },
+      },
+    ],
   };
 
   const modalProps: ModalProps = {
     title: "Create User Type",
     inputs: heads,
-    submit: async (values) => {
+    onCreate: async (values) => {
       "use server";
       console.log(values);
     },
@@ -50,8 +68,7 @@ export default async function page() {
     <TableTemplate
       title="User Types"
       modalProps={modalProps}
-      heads={tableProps.heads}
-      rows={tableProps.rows}
+      tableProps={tableProps}
     />
   );
 }

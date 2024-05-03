@@ -46,12 +46,20 @@ export default async function page() {
   const tableProps: TableProps = {
     heads: heads,
     rows: rows,
+    onUpdate: async (values) => {
+      "use server";
+      console.log(values);
+    },
+    onDelete: async (values) => {
+      "use server";
+      console.log(values);
+    },
   };
 
   const modalProps: ModalProps = {
     title: "Create a project",
     inputs: heads,
-    submit: async (values) => {
+    onCreate: async (values) => {
       "use server";
       console.log(values);
     },
@@ -61,8 +69,7 @@ export default async function page() {
     <TableTemplate
       title="Access Rules"
       modalProps={modalProps}
-      heads={tableProps.heads}
-      rows={tableProps.rows}
+      tableProps={tableProps}
     />
   );
 }
