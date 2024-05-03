@@ -7,11 +7,15 @@ import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import Logout from "../Logout";
 import Link from "next/link";
+import { useLoading } from "../LoadingProvider";
+import Loader from "../Loader";
 
 export default function Aside() {
   useEffect(() => {
     !localStorage.getItem(`token`) && redirect("/auth");
   }, []);
+
+  const { loading } = useLoading();
 
   const data = [
     {
@@ -61,12 +65,11 @@ export default function Aside() {
     >
       <div className="d-flex flex-column h-100 gap-4 overflow-y-auto p-4">
         <Image src={hLogo} alt="App Nest" className="logo" />
+        {loading && <Loader />}
+        {/* TODO: fix loader problem not appearing in some screen sizes */}
         <h6 className="text-danger">Trial Launch</h6>
-
         <Logout />
-
         <Link href="/dashboard">Dashboard</Link>
-
         {data.map((section, index) => (
           <Section key={index} title={section.title} list={section.list} />
         ))}
