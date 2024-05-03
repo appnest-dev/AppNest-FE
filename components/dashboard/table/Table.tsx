@@ -2,13 +2,27 @@ import TableComp from "react-bootstrap/Table";
 import Paginator from "./Paginator";
 import Modal from "../modal/Modal";
 import { InputProps } from "@/components/form/Input";
+import { Values } from "@/components/form/functions/validate";
+import { Button } from "react-bootstrap";
 
 export type TableProps = {
   heads: InputProps[];
   rows: Array<{ [key: string]: number | string | boolean }>;
+  onUpdate: (values: Values) => void;
+  onDelete: (values: Values) => void;
+  customActions?: {
+    content: any;
+    onClick: () => void;
+  }[];
 };
 
-export default function Table({ heads, rows }: TableProps) {
+export default function Table({
+  heads,
+  rows,
+  onUpdate,
+  onDelete,
+  customActions,
+}: TableProps) {
   return (
     <>
       <TableComp striped>
@@ -44,8 +58,8 @@ export default function Table({ heads, rows }: TableProps) {
                     value: row[item.id],
                   }))}
                   title="Update"
-                  submit={async (values) => {
-                    console.log(values);
+                  onCreate={async (values) => {
+                    onUpdate(values);
                   }}
                 />
 
@@ -53,14 +67,28 @@ export default function Table({ heads, rows }: TableProps) {
                   buttonTitle="D"
                   inputs={heads.map((item) => ({
                     ...item,
+                    required: false,
                     disabled: true,
                     value: row[item.id],
                   }))}
                   title="Delete"
-                  submit={async (values) => {
-                    console.log(values);
+                  onCreate={async (values) => {
+                    onDelete(values);
                   }}
                 />
+
+                {customActions &&
+                  customActions.map((action, index) => (
+                    <Button
+                      key={index}
+                      variant="light"
+                      onClick={async () => {
+                        action.onClick();
+                      }}
+                    >
+                      {action.content}
+                    </Button>
+                  ))}
               </td>
             </tr>
           ))}
