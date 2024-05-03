@@ -4,12 +4,15 @@ import { Accordion } from "react-bootstrap";
 import TableTemplate from "../TableTemplate";
 import React from "react";
 import { InputProps } from "@/components/form/Input";
+import { Values } from "@/components/form/functions/validate";
 
 export type ModelProps = {
   title: string;
-  properties: Array<{ [key: string]: string | number | boolean }>;
-  relations: Array<{ [key: string]: string | number | boolean }>;
-  endpoints: Array<{ [key: string]: string | number | boolean }>;
+  data: {
+    properties: { [key: string]: string | number | boolean }[];
+    relations: { [key: string]: string | number | boolean }[];
+    endpoints: { [key: string]: string | number | boolean }[];
+  };
 };
 
 type Props = {
@@ -37,7 +40,7 @@ const ModelsLayout: React.FC<{ data: ModelProps[] }> = ({ data }) => {
         type: "text",
         required: false,
       },
-      { id: "regex", title: "Regex", type: "text", required: true },
+      { id: "regex", title: "Regex", type: "text" },
       { id: "unique", title: "Unique?", type: "switch" },
     ],
     relations: [
@@ -52,6 +55,13 @@ const ModelsLayout: React.FC<{ data: ModelProps[] }> = ({ data }) => {
     ],
   };
 
+  const onUpdate = async (values: Values) => {
+    console.log(values);
+  };
+  const onDelete = async (values: Values) => {
+    console.log(values);
+  };
+
   return (
     <>
       {data.map((values: ModelProps, mainIndex) => (
@@ -59,25 +69,25 @@ const ModelsLayout: React.FC<{ data: ModelProps[] }> = ({ data }) => {
           <Accordion.Item eventKey={`${mainIndex}`}>
             <Accordion.Header>{values.title}</Accordion.Header>
             <Accordion.Body>
-              {values[titles[mainIndex].id as keyof Props].map(
-                (_, index, value) => (
-                  <TableTemplate
-                    key={index}
-                    title={titles[index].table}
-                    heads={heads[titles[mainIndex].id as keyof Props].map(
-                      (head) => head
-                    )}
-                    rows={value}
-                    modalProps={{
-                      title: titles[index].modal,
-                      inputs: heads[titles[mainIndex].id as keyof Props],
-                      submit: async (values) => {
-                        console.log(values);
-                      },
-                    }}
-                  />
-                )
-              )}
+              {titles.map((title, index) => (
+                <TableTemplate
+                  key={index}
+                  title={titles[index].table}
+                  tableProps={{
+                    heads: heads[title.id as keyof Props],
+                    rows: values.data[title.id as keyof Props],
+                    onUpdate: onUpdate,
+                    onDelete: onDelete,
+                  }}
+                  modalProps={{
+                    title: titles[index].modal,
+                    inputs: heads[title.id as keyof Props],
+                    onCreate: async (values) => {
+                      console.log(values);
+                    },
+                  }}
+                />
+              ))}
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
