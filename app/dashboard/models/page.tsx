@@ -26,7 +26,7 @@ export default async function page() {
           <Modal
             title="Create Model"
             inputs={inputs}
-            submit={async (values) => {
+            onCreate={async (values) => {
               "use server";
               console.log(values);
             }}
