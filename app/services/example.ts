@@ -117,135 +117,139 @@ export const getAllAccessRules = async () => {
 const mockModelsList = [
   {
     title: "Model 1",
-    properties: [
-      {
-        uniqueKey: "prop1",
-        name: "prop1",
-        type: "prop1",
-        required: true,
-        defaultValue: "",
-        regex: "a-z",
-        unique: true,
-      },
-      {
-        uniqueKey: "prop2",
-        name: "prop2",
-        type: "prop2",
-        required: false,
-        defaultValue: "",
-        regex: "a-z",
-        unique: true,
-      },
-      {
-        uniqueKey: "prop3",
-        name: "prop3",
-        type: "prop3",
-        required: true,
-        defaultValue: "Nice Job",
-        regex: "",
-        unique: false,
-      },
-    ],
-    relations: [
-      {
-        modal1: "Modal 1",
-        modal2: "Modal 2",
-        relation: "1 -> 1",
-      },
-      {
-        modal1: "Modal 1",
-        modal2: "Modal 2",
-        relation: "... -> 1",
-      },
-      {
-        modal1: "Modal 1",
-        modal2: "Modal 2",
-        relation: "1 -> ...",
-      },
-    ],
-    endpoints: [
-      {
-        name: "Endpoint 1",
-        coverage: "All",
-        type: "Get",
-      },
-      {
-        name: "Endpoint 2",
-        coverage: "Own",
-        type: "Create",
-      },
-      {
-        name: "Endpoint 3",
-        coverage: "Own",
-        type: "Post",
-      },
-    ],
+    data: {
+      properties: [
+        {
+          uniqueKey: "prop1",
+          name: "prop1",
+          type: "prop1",
+          required: true,
+          defaultValue: "",
+          regex: "a-z",
+          unique: true,
+        },
+        {
+          uniqueKey: "prop2",
+          name: "prop2",
+          type: "prop2",
+          required: false,
+          defaultValue: "",
+          regex: "a-z",
+          unique: true,
+        },
+        {
+          uniqueKey: "prop3",
+          name: "prop3",
+          type: "prop3",
+          required: true,
+          defaultValue: "Nice Job",
+          regex: "",
+          unique: false,
+        },
+      ],
+      relations: [
+        {
+          modal1: "Modal 1",
+          modal2: "Modal 2",
+          relation: "1 -> 1",
+        },
+        {
+          modal1: "Modal 1",
+          modal2: "Modal 2",
+          relation: "... -> 1",
+        },
+        {
+          modal1: "Modal 1",
+          modal2: "Modal 2",
+          relation: "1 -> ...",
+        },
+      ],
+      endpoints: [
+        {
+          name: "Endpoint 1",
+          coverage: "All",
+          type: "Get",
+        },
+        {
+          name: "Endpoint 2",
+          coverage: "Own",
+          type: "Create",
+        },
+        {
+          name: "Endpoint 3",
+          coverage: "Own",
+          type: "Post",
+        },
+      ],
+    },
   },
   {
     title: "Model 2",
-    properties: [
-      {
-        uniqueKey: "prop1",
-        name: "prop1",
-        type: "prop1",
-        required: true,
-        defaultValue: "",
-        regex: "a-z",
-        unique: true,
-      },
-      {
-        uniqueKey: "prop2",
-        name: "prop2",
-        type: "prop2",
-        required: false,
-        defaultValue: "",
-        regex: "a-z",
-        unique: true,
-      },
-      {
-        uniqueKey: "prop3",
-        name: "prop3",
-        type: "prop3",
-        required: true,
-        defaultValue: "Nice Job",
-        regex: "",
-        unique: false,
-      },
-    ],
-    relations: [
-      {
-        modal1: "Modal 1",
-        modal2: "Modal 2",
-        relation: "1 -> 1",
-      },
-      {
-        modal1: "Modal 1",
-        modal2: "Modal 2",
-        relation: "... -> 1",
-      },
-      {
-        modal1: "Modal 1",
-        modal2: "Modal 2",
-        relation: "1 -> ...",
-      },
-    ],
-    endpoints: [
-      {
-        name: "Endpoint 1",
-        coverage: "All",
-        type: "Get",
-      },
-      {
-        name: "Endpoint 2",
-        coverage: "Own",
-        type: "Create",
-      },
-      {
-        name: "Endpoint 3",
-        coverage: "Own",
-        type: "Post",
-      },
-    ],
+    data: {
+      properties: [
+        {
+          uniqueKey: "prop4",
+          name: "prop4",
+          type: "prop4",
+          required: true,
+          defaultValue: "",
+          regex: "a-z",
+          unique: true,
+        },
+        {
+          uniqueKey: "prop5",
+          name: "prop5",
+          type: "prop5",
+          required: false,
+          defaultValue: "",
+          regex: "a-z",
+          unique: true,
+        },
+        {
+          uniqueKey: "prop6",
+          name: "prop6",
+          type: "prop6",
+          required: true,
+          defaultValue: "Nice Job",
+          regex: "",
+          unique: false,
+        },
+      ],
+      relations: [
+        {
+          modal1: "Modal 1",
+          modal2: "Modal 2",
+          relation: "1 -> 1",
+        },
+        {
+          modal1: "Modal 1",
+          modal2: "Modal 2",
+          relation: "... -> 1",
+        },
+        {
+          modal1: "Modal 1",
+          modal2: "Modal 2",
+          relation: "1 -> ...",
+        },
+      ],
+      endpoints: [
+        {
+          name: "Endpoint 1",
+          coverage: "All",
+          type: "Get",
+        },
+        {
+          name: "Endpoint 2",
+          coverage: "Own",
+          type: "Create",
+        },
+        {
+          name: "Endpoint 3",
+          coverage: "Own",
+          type: "Post",
+        },
+      ],
+    },
   },
 ];
 
