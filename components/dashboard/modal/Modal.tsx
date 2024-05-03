@@ -10,14 +10,14 @@ export type ModalProps = {
   buttonTitle?: string;
   title: string;
   inputs: InputProps[];
-  submit: (values: Values) => void;
+  onCreate: (values: Values) => void;
 };
 
 export default function Modal({
   buttonTitle = "New",
   inputs,
   title,
-  submit,
+  onCreate,
 }: ModalProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   return (
@@ -55,7 +55,7 @@ export default function Modal({
             className="mw-100 w-100 rounded-1 overflow-y-auto"
             inputs={inputs}
             submitTitle="Submit"
-            onSubmit={submit}
+            onSubmit={onCreate}
           />
         </div>
       </div>
