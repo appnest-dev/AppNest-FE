@@ -36,7 +36,7 @@ export default function FormComponent({
   const initialValues = inputs.reduce((prev, curr) => {
     return {
       ...prev,
-      [curr.id]: curr.value || generateInitialValue(curr.type),
+      [curr.id]: curr.value || curr.checked || generateInitialValue(curr.type),
     };
   }, {});
   const [isLoading, setIsLoading] = useState(false);
