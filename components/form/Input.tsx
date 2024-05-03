@@ -13,6 +13,7 @@ export type InputProps = {
   confirmationId?: string;
   value?: string | boolean | number;
   disabled?: boolean;
+  checked?: boolean;
 };
 
 type ControlledInputProps = {
@@ -30,11 +31,10 @@ export default function Input({
   required,
   confirmationId,
   handleChange,
-  value,
   values,
   disabled = false,
 }: InputProps & ControlledInputProps) {
-  const [state, setState] = useState(value as boolean | true);
+  const [state, setState] = useState(values[id] as boolean | false);
   return (
     <Form.Group className="d-flex flex-column">
       <Form.Label htmlFor={id} className="fw-semibold">
@@ -45,7 +45,7 @@ export default function Input({
         <Form.Check
           type="switch"
           id={id}
-          value={state ? "on" : "off"}
+          checked={state}
           onChange={(e) => {
             setState((prev) => !prev);
             handleChange(e);
