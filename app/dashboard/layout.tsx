@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { ReactNode } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@/components/dashboard/styles.css";
+import LoadingProvider from "@/components/dashboard/LoadingProvider";
 
 export const metadata: Metadata = {
   title: "AppNest | dashboard",
@@ -10,9 +11,11 @@ export const metadata: Metadata = {
 
 export default function layout({ children }: { children: ReactNode }) {
   return (
-    <main className="d-flex gap-2" style={{ minHeight: "100dvh" }}>
-      <Aside />
-      {children}
-    </main>
+    <LoadingProvider>
+      <main className="d-flex gap-2" style={{ minHeight: "100dvh" }}>
+        <Aside />
+        {children}
+      </main>
+    </LoadingProvider>
   );
 }
