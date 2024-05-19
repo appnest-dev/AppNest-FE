@@ -32,7 +32,8 @@ export default function Modal({
         {buttonTitle}
       </Button>
       <div
-        className="position-fixed z-3 top-50 start-50 translate-middle w-100 h-100 bg-black bg-opacity-25 d-none justify-content-center align-items-center"
+        className="position-fixed z-3 top-50 start-50 w-100 h-100 bg-black bg-opacity-25 d-none justify-content-center align-items-center"
+        style={{ translate: "-50% -50%" }}
         ref={containerRef}
       >
         <div

@@ -43,8 +43,8 @@ export default function Home() {
         <div className="position-relative w-100">
           <hr />
           <span
-            className="d-block position-absolute bg-white translate-middle start-50 top-50 px-1"
-            style={{ fontSize: 14 }}
+            className="d-block position-absolute bg-white start-50 top-50 px-1"
+            style={{ fontSize: 14, translate: "-50% -50%" }}
           >
             OR
           </span>
