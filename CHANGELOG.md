@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/AppNest/AppNest-FE/compare/v0.2.2...v0.3.0) (2024-05-19)
+
+
+### Features
+
+* **projects/[projectid]/page.tsx:** add more data ([a833e61](https://github.com/AppNest/AppNest-FE/commitsa833e61f03b6f4f68b520decc3167d808a0d87a3))
+
 ### [0.2.2](https://github.com/AppNest/AppNest-FE/compare/v0.2.1...v0.2.2) (2024-05-19)
 
 ### [0.2.1](https://github.com/AppNest/AppNest-FE/compare/v0.2.0...v0.2.1) (2024-05-19)
