@@ -3,18 +3,12 @@
 import Image from "next/image";
 import hLogo from "@/public/h-logo.png";
 import Section from "./Section";
-import { redirect } from "next/navigation";
-import { useEffect } from "react";
 import Logout from "../Logout";
 import Link from "next/link";
 import { useLoading } from "../LoadingProvider";
 import Loader from "../Loader";
 
 export default function Aside() {
-  useEffect(() => {
-    !localStorage.getItem(`token`) && redirect("/auth");
-  }, []);
-
   const { loading } = useLoading();
 
   const data = [
