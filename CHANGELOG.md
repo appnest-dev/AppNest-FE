@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/AppNest/AppNest-FE/compare/v0.3.0...v0.4.0) (2024-05-19)
+
+
+### Features
+
+* **auth/register/page.tsx:** add more inputs ([fc632b9](https://github.com/AppNest/AppNest-FE/commitsfc632b94916c07b4568d9466bcc23ddcb798f015))
+
 ## [0.3.0](https://github.com/AppNest/AppNest-FE/compare/v0.2.2...v0.3.0) (2024-05-19)
 
 
