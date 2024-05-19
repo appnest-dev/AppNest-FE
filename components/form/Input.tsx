@@ -16,6 +16,7 @@ export type InputProps = {
   checked?: boolean;
   excludeInForm?: boolean;
   excludeInTable?: boolean;
+  options?: (string | number)[];
 };
 
 type ControlledInputProps = {
@@ -35,6 +36,7 @@ export default function Input({
   handleChange,
   values,
   disabled = false,
+  options,
 }: InputProps & ControlledInputProps) {
   const [state, setState] = useState(values[id] as boolean | false);
   return (
@@ -53,6 +55,12 @@ export default function Input({
             handleChange(e);
           }}
         />
+      ) : type == "select" && options ? (
+        <Form.Select>
+          {options.map((option, index) => (
+            <option key={index}>{option}</option>
+          ))}
+        </Form.Select>
       ) : (
         <Form.Control
           as={Field}

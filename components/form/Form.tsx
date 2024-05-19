@@ -84,6 +84,7 @@ export default function FormComponent({
                   handleChange={(e) => handleChange(e)}
                   values={values}
                   disabled={el.disabled}
+                  options={el.options}
                 />
                 <ErrorMessage name={el.id}>
                   {(msg) => (
