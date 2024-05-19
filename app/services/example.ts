@@ -305,6 +305,21 @@ const mockProjectDashboardList = [
     title: "Access Rules",
     examples: ["Rule 1", "Rule 2", "Rule 3", "Rule 4"],
   },
+  {
+    title: "Project Members",
+    examples: ["A", "B", "C"],
+  },
+  {
+    title: "URLs",
+    examples: [
+      "Document",
+      "Brand Guideline URL",
+      "UI / UX URL",
+      "UML URL",
+      "FE Repo URL",
+      "BE Repo URL",
+    ],
+  },
 ];
 
 export const getProjectDashboard = async () => {
