@@ -31,6 +31,22 @@ export default function page() {
       required: true,
       confirmationId: "password",
     },
+    {
+      id: "role",
+      title: "Role",
+      type: "select",
+      placeholder: "Select, project manager or project member",
+      required: true,
+      options: ["Project manager", "Project member"],
+    },
+    // FIXME: make project id not required when role isn't project member
+    {
+      id: "projectId",
+      title: "Project ID(s)",
+      type: "text",
+      placeholder: "If project member is selected",
+      required: true,
+    },
   ];
 
   return (
